@@ -1,0 +1,2438 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechZone | Digital Studio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            transition: 0.3s;
+        }
+
+        /* NAVBAR */
+        header {
+            width: 100%;
+            background: #111827;
+            padding: 18px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #00d4ff;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #00d4ff;
+        }
+
+        .menu-btn {
+            display: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .dark-btn {
+            border: none;
+            background: #00d4ff;
+            padding: 9px 13px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #0066ff, #00d4ff);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #0066ff;
+            padding: 14px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #111827;
+            color: white;
+        }
+
+        /* COMMON SECTION */
+        section {
+            padding: 80px 7%;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .title h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .title p {
+            color: #666;
+        }
+
+        /* ABOUT */
+        .about {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-box {
+            flex: 1;
+        }
+
+        .about-box h2 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .about-box p {
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-height: 300px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #111827, #0066ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 80px;
+        }
+
+        /* SERVICES */
+        .services {
+            background: #eef2ff;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card {
+            cursor: pointer;
+        }
+
+        .service-page {
+            min-height: 80vh;
+            display: none;
+            padding: 80px 7%;
+            background: #f5f7fb;
+        }
+
+        .service-page.active-service {
+            display: block;
+        }
+
+        .service-detail {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .service-detail .big-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .service-detail h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .service-detail p {
+            color: #555;
+            line-height: 1.8;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        body.dark .service-page {
+            background: #0f172a;
+        }
+
+        body.dark .service-detail {
+            background: #1e293b;
+            color: white;
+        }
+
+        body.dark .service-detail p {
+            color: #cbd5e1;
+        }
+
+        .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 23px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* COMPLETE SERVICE DETAILS */
+        .service-detail {
+            max-width: 1000px;
+        }
+
+        .service-detail .detail-intro {
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .service-detail .detail-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0 30px;
+            text-align: left;
+        }
+
+        .service-detail .detail-item {
+            padding: 18px;
+            border-radius: 12px;
+            background: #f1f5f9;
+            border-left: 4px solid #0066ff;
+        }
+
+        .service-detail .detail-item strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #0066ff;
+        }
+
+        .service-detail .how-it-works {
+            margin: 25px 0 30px;
+            text-align: left;
+        }
+
+        .service-detail .how-it-works h3 {
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .service-detail .how-it-works ol {
+            padding-left: 25px;
+            line-height: 1.9;
+        }
+
+        .service-detail .back-btn {
+            margin-top: 10px;
+        }
+
+        body.dark .service-detail .detail-item {
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        body.dark .service-detail .detail-item strong {
+            color: #38bdf8;
+        }
+
+        @media (max-width: 700px) {
+            .service-detail .detail-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CONTACT */
+        .contact-container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 35px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+        }
+
+        .input-box label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .input-box input,
+        .input-box textarea {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        .input-box textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #0066ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background: #004dcc;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer .social {
+            margin-top: 15px;
+        }
+
+        footer a {
+            color: #00d4ff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        /* LOGIN POPUP */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .login-box {
+            width: 380px;
+            max-width: 90%;
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .close {
+            position: absolute;
+            top: 12px;
+            right: 18px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        /* THEME TRANSITION */
+        body,
+        .card,
+        .contact-form,
+        .service-detail,
+        .service-page,
+        .services,
+        .input-box input,
+        .input-box textarea {
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.dark .card h3,
+        body.dark .service-detail h2,
+        body.dark .about-box h2,
+        body.dark .title h2 {
+            color: #ffffff;
+        }
+
+        body.dark footer {
+            background: #020617;
+        }
+
+        /* DARK MODE */
+        body.dark {
+            background: #0f172a;
+            color: white;
+        }
+
+        body.dark .title p,
+        body.dark .about-box p {
+            color: #cbd5e1;
+        }
+
+        body.dark .services {
+            background: #111827;
+        }
+
+        body.dark .card,
+        body.dark .contact-form {
+            background: #1e293b;
+            color: white;
+        }
+
+        body.dark .card p {
+            color: #cbd5e1;
+        }
+
+        body.dark .input-box input,
+        body.dark .input-box textarea {
+            background: #0f172a;
+            color: white;
+            border-color: #475569;
+        }
+
+
+        /* JAVASCRIPT PAGE NAVIGATION */
+        .page {
+            display: none;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        .page.active-page.hero {
+            display: flex;
+        }
+
+        /* AUTH PAGES */
+        .auth-page {
+            min-height: calc(100vh - 75px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+            background: #f5f7fb;
+        }
+
+        .auth-page.active-auth {
+            display: flex;
+        }
+
+        .auth-box {
+            width: 430px;
+            max-width: 100%;
+            background: white;
+            padding: 38px;
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.10);
+        }
+
+        .auth-box h2 {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .auth-box .auth-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 28px;
+        }
+
+        .auth-box .input-box {
+            margin-bottom: 17px;
+        }
+
+        .auth-box .input-box input {
+            width: 100%;
+        }
+
+        .auth-submit {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 9px;
+            background: #0066ff;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .auth-submit:hover {
+            background: #004dcc;
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .auth-switch a {
+            color: #0066ff;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 24px 0;
+            color: #888;
+        }
+
+        .auth-divider::before,
+        .auth-divider::after {
+            content: "";
+            height: 1px;
+            background: #ddd;
+            flex: 1;
+        }
+
+        .google-btn {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ddd;
+            border-radius: 9px;
+            background: white;
+            color: #222;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .google-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .auth-note {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 12px;
+            color: #777;
+            line-height: 1.5;
+        }
+
+        body.dark .auth-page {
+            background: #0f172a;
+        }
+
+        body.dark .auth-box {
+            background: #1e293b;
+            color: white;
+        }
+
+        body.dark .auth-box .auth-subtitle,
+        body.dark .auth-note {
+            color: #cbd5e1;
+        }
+
+        body.dark .auth-divider {
+            color: #94a3b8;
+        }
+
+        body.dark .auth-divider::before,
+        body.dark .auth-divider::after {
+            background: #475569;
+        }
+
+        body.dark .google-btn {
+            background: #0f172a;
+            color: white;
+            border-color: #475569;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            .menu-btn {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #111827;
+                flex-direction: column;
+                padding: 25px;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .about {
+                flex-direction: column;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                width: 100%;
+            }
+        }
+    
+/* ===== UNIQUE TECHZONE DESIGN OVERRIDE ===== */
+:root{
+ --tz-bg:#070b17;--tz-panel:#0e1528;--tz-white:#f8fafc;
+ --tz-muted:#94a3b8;--tz-a:#7c3aed;--tz-b:#06b6d4;--tz-line:rgba(255,255,255,.10);
+}
+*{scroll-behavior:smooth}
+body{
+ font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+ background:#f7f8fc;color:#111827;
+}
+header{
+ width:calc(100% - 28px);margin:14px;
+ padding:12px 18px;border:1px solid rgba(255,255,255,.12);
+ border-radius:22px;background:rgba(7,11,23,.88);
+ backdrop-filter:blur(20px);box-shadow:0 15px 50px rgba(2,6,23,.22);
+}
+.logo{
+ font-size:24px;font-weight:800;letter-spacing:-.8px;
+ color:#fff;display:flex;align-items:center;gap:9px;
+}
+.logo:before{
+ content:"TZ";display:grid;place-items:center;width:35px;height:35px;
+ border-radius:11px;color:#fff;font-size:12px;font-weight:900;
+ background:linear-gradient(135deg,var(--tz-a),var(--tz-b));
+ box-shadow:0 8px 25px rgba(124,58,237,.35);
+}
+nav{gap:5px}
+nav a{
+ padding:10px 12px;border-radius:11px;color:#cbd5e1;
+ font-weight:600;font-size:14px;
+}
+nav a:hover{background:rgba(255,255,255,.09);color:#fff}
+.dark-btn{
+ color:#fff!important;border:1px solid rgba(255,255,255,.10);
+ background:linear-gradient(135deg,var(--tz-a),#4f46e5);
+ border-radius:11px;padding:10px 13px;font-weight:700;
+ transition:.25s;box-shadow:0 8px 20px rgba(79,70,229,.22);
+}
+.dark-btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+
+.hero{
+ min-height:calc(100vh - 10px);margin-top:-70px;padding:155px 7% 90px;
+ position:relative;overflow:hidden;
+ background:
+ radial-gradient(circle at 16% 30%,rgba(6,182,212,.20),transparent 24%),
+ radial-gradient(circle at 84% 25%,rgba(124,58,237,.25),transparent 28%),
+ linear-gradient(135deg,#050816,#0c1430 52%,#111b3e);
+}
+.hero:before{
+ content:"";position:absolute;width:520px;height:520px;right:-180px;bottom:-250px;
+ border:1px solid rgba(34,211,238,.18);border-radius:50%;
+ box-shadow:0 0 100px rgba(6,182,212,.10);
+}
+.hero-content{max-width:920px;position:relative;z-index:2}
+.hero h1{
+ font-size:clamp(48px,7vw,88px);line-height:1;letter-spacing:-4px;
+ margin-bottom:25px;color:#fff;
+ background:linear-gradient(100deg,#fff,#67e8f9 45%,#c4b5fd);
+ -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero p{color:#b8c4d8;font-size:19px;line-height:1.8;max-width:700px;margin:0 auto 34px}
+.btn{
+ border-radius:13px;padding:14px 22px;font-weight:800;
+ background:#fff;color:#111827;box-shadow:0 12px 30px rgba(0,0,0,.20);
+ transition:.25s;border:1px solid rgba(255,255,255,.18);
+}
+.btn:hover{
+ transform:translateY(-3px);background:linear-gradient(135deg,var(--tz-a),#4f46e5);
+ color:#fff;box-shadow:0 18px 35px rgba(79,70,229,.30);
+}
+
+section{padding:95px 7%}
+.title h2,.about-box h2{font-size:clamp(35px,5vw,50px);letter-spacing:-1.8px}
+.title p{color:#64748b}
+.about{gap:70px}
+.about-box p{color:#64748b;line-height:1.9}
+.about-image{
+ min-height:390px;border-radius:30px;position:relative;overflow:hidden;
+ background:radial-gradient(circle at 30% 25%,rgba(34,211,238,.24),transparent 25%),
+ linear-gradient(135deg,#0b1224,#312e81);
+ border:1px solid rgba(255,255,255,.10);box-shadow:0 25px 70px rgba(15,23,42,.18);
+ font-size:100px;
+}
+.about-image:after{
+ content:"DIGITAL • CREATIVE • RESPONSIVE";
+ position:absolute;left:25px;right:25px;bottom:25px;padding:13px 15px;
+ border-radius:14px;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);
+ color:#dbeafe;font-size:11px;letter-spacing:2px;font-weight:800;
+}
+
+.services{
+ background:radial-gradient(circle at 90% 10%,rgba(124,58,237,.10),transparent 25%),#f1f5f9;
+}
+.cards{gap:22px}
+.card{
+ min-height:245px;padding:30px 25px;border-radius:23px;
+ background:rgba(255,255,255,.82);border:1px solid rgba(148,163,184,.18);
+ box-shadow:0 12px 35px rgba(15,23,42,.07);backdrop-filter:blur(12px);
+ position:relative;overflow:hidden;
+}
+.card:before{
+ content:"";position:absolute;width:110px;height:110px;right:-50px;top:-50px;
+ border-radius:50%;background:linear-gradient(135deg,rgba(124,58,237,.14),rgba(6,182,212,.14));
+}
+.card:hover{
+ transform:translateY(-9px);border-color:rgba(124,58,237,.35);
+ box-shadow:0 25px 55px rgba(15,23,42,.13);
+}
+.icon{
+ width:65px;height:65px;margin:0 auto 20px;border-radius:19px;
+ display:grid;place-items:center;font-size:32px;
+ background:linear-gradient(135deg,#ede9fe,#cffafe);
+}
+.card h3{font-size:21px}.card p{color:#64748b}
+
+.service-page{background:#f7f8fc}
+.service-detail{
+ max-width:1050px;border-radius:28px;padding:48px;
+ background:rgba(255,255,255,.90);border:1px solid rgba(148,163,184,.18);
+ box-shadow:0 25px 70px rgba(15,23,42,.10);backdrop-filter:blur(14px);
+}
+.big-icon{
+ width:85px;height:85px;margin:0 auto 20px;display:grid;place-items:center;
+ border-radius:24px;background:linear-gradient(135deg,#ede9fe,#cffafe);
+}
+.service-detail .detail-item{
+ padding:20px;border-radius:17px;background:#f8fafc;border:1px solid #e2e8f0;
+ border-left:0;box-shadow:0 5px 18px rgba(15,23,42,.035);
+}
+.service-detail .detail-item strong{color:#6d28d9}
+.how-it-works{
+ padding:24px;border-radius:19px;background:linear-gradient(135deg,#f8fafc,#eef2ff);
+}
+
+.contact-form{
+ padding:40px;border-radius:26px;background:rgba(255,255,255,.88);
+ border:1px solid rgba(148,163,184,.18);box-shadow:0 25px 70px rgba(15,23,42,.10);
+}
+.input-box input,.input-box textarea{
+ padding:15px;border-radius:13px;border:1px solid #e2e8f0;background:#f8fafc;
+ transition:.2s;
+}
+.input-box input:focus,.input-box textarea:focus{
+ border-color:#7c3aed;box-shadow:0 0 0 4px rgba(124,58,237,.10);background:#fff;
+}
+.submit-btn,.auth-submit{
+ border-radius:13px!important;
+ background:linear-gradient(135deg,#7c3aed,#4f46e5)!important;
+ box-shadow:0 12px 25px rgba(79,70,229,.22);
+ font-weight:800;
+}
+
+.auth-page{
+ background:radial-gradient(circle at 15% 20%,rgba(6,182,212,.12),transparent 25%),
+ radial-gradient(circle at 85% 80%,rgba(124,58,237,.14),transparent 28%),#f7f8fc;
+}
+.auth-box{
+ border-radius:27px;padding:40px;background:rgba(255,255,255,.90);
+ border:1px solid rgba(148,163,184,.18);box-shadow:0 30px 80px rgba(15,23,42,.14);
+ backdrop-filter:blur(18px);
+}
+.auth-box h2{font-size:36px;letter-spacing:-1px}
+.google-btn{border-radius:13px;transition:.2s}
+.google-btn:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(15,23,42,.08)}
+
+footer{background:#050816;padding:55px 20px;border-top:1px solid rgba(255,255,255,.08)}
+footer h3{font-size:26px}
+footer p{color:#94a3b8}
+footer a{color:#67e8f9}
+
+.modal{backdrop-filter:blur(10px)}
+.login-box{
+ border-radius:24px;border:1px solid rgba(148,163,184,.18);
+ box-shadow:0 30px 80px rgba(0,0,0,.30);
+}
+
+body.dark{background:#050816}
+body.dark .services,body.dark .service-page{background:#080d1b}
+body.dark .card,body.dark .contact-form,body.dark .service-detail,
+body.dark .auth-box,body.dark .login-box{
+ background:rgba(15,23,42,.90);color:#f8fafc;border-color:rgba(148,163,184,.13);
+}
+body.dark .card p,body.dark .about-box p,body.dark .title p,
+body.dark .service-detail p,body.dark .auth-subtitle{color:#94a3b8}
+body.dark .service-detail .detail-item{background:#0b1222;border-color:#1e293b}
+body.dark .how-it-works{background:linear-gradient(135deg,#0b1222,#111827)}
+body.dark .input-box input,body.dark .input-box textarea{background:#0b1222;color:#fff;border-color:#334155}
+body.dark .google-btn{background:#0b1222;color:#fff;border-color:#334155}
+body.dark .auth-page{background:#050816}
+
+@media(max-width:800px){
+ header{width:calc(100% - 20px);margin:10px;border-radius:17px}
+ .hero{margin-top:-65px;padding:145px 20px 70px}
+ .hero h1{font-size:48px;letter-spacing:-2.5px}
+ .hero p{font-size:16px}
+ section{padding:70px 20px}
+ .about{gap:35px}.about-image{min-height:280px}
+ .service-detail{padding:28px 18px}
+ .contact-form{padding:28px 20px}.auth-box{padding:30px 22px}
+ nav{padding:18px}
+}
+
+
+/* ===== TECHZONE V3 — PREMIUM AGENCY UI ===== */
+:root{
+  --tz-violet:#6d5dfc;
+  --tz-purple:#8b5cf6;
+  --tz-cyan:#22d3ee;
+  --tz-ink:#070a14;
+  --tz-soft:#f7f8fc;
+  --tz-card:rgba(255,255,255,.82);
+}
+body{
+  background:
+    radial-gradient(circle at 0% 0%,rgba(109,93,252,.08),transparent 28%),
+    radial-gradient(circle at 100% 20%,rgba(34,211,238,.07),transparent 24%),
+    var(--tz-soft);
+}
+header{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  top:16px;
+  width:min(1180px,calc(100% - 28px));
+  margin:0;
+  padding:10px 12px 10px 18px;
+  border-radius:18px;
+  background:rgba(7,10,20,.82);
+  border:1px solid rgba(255,255,255,.13);
+  backdrop-filter:blur(22px) saturate(140%);
+  box-shadow:0 18px 55px rgba(2,6,23,.25);
+}
+.logo{
+  font-size:23px;
+  letter-spacing:-1px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.logo:before{
+  content:"";
+  width:34px;height:34px;
+  border-radius:11px;
+  background:
+    linear-gradient(135deg,var(--tz-cyan),var(--tz-violet) 55%,var(--tz-purple));
+  box-shadow:0 8px 25px rgba(109,93,252,.38);
+}
+nav{gap:4px}
+nav a{
+  padding:9px 12px;
+  border-radius:10px;
+  font-size:13px;
+  color:#cbd5e1;
+}
+nav a:hover{
+  color:#fff;
+  background:rgba(255,255,255,.09);
+}
+.dark-btn{
+  padding:9px 12px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--tz-violet),#4f46e5);
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  margin-top:0;
+  padding:170px 7% 95px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 15% 30%,rgba(34,211,238,.16),transparent 22%),
+    radial-gradient(circle at 83% 28%,rgba(109,93,252,.25),transparent 27%),
+    linear-gradient(135deg,#050816 0%,#0b1025 50%,#11183b 100%);
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  width:600px;height:600px;
+  right:-260px;top:-150px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 0 120px rgba(109,93,252,.12);
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  width:10px;height:10px;
+  left:12%;top:26%;
+  border-radius:50%;
+  background:var(--tz-cyan);
+  box-shadow:
+    130px 90px 0 rgba(139,92,246,.8),
+    330px -50px 0 rgba(34,211,238,.65),
+    510px 190px 0 rgba(139,92,246,.55);
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+}
+.hero h1{
+  max-width:920px;
+  margin:0 auto 24px;
+  font-size:clamp(50px,7.5vw,88px);
+  letter-spacing:-4px;
+  line-height:.98;
+  background:linear-gradient(105deg,#fff 18%,#a5f3fc 48%,#c4b5fd 78%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero p{
+  color:#aab7cf;
+  max-width:690px;
+  font-size:18px;
+  line-height:1.8;
+}
+.hero .btn:first-of-type{
+  background:linear-gradient(135deg,var(--tz-cyan),#38bdf8);
+  color:#06111c;
+}
+.hero .btn:first-of-type:hover{
+  background:linear-gradient(135deg,var(--tz-violet),var(--tz-purple));
+  color:#fff;
+}
+
+/* SECTION HEADINGS */
+.title{margin-bottom:52px}
+.title h2,.about-box h2{
+  color:#0f172a;
+  font-weight:800;
+  letter-spacing:-2px;
+}
+.title p{color:#64748b}
+
+/* ABOUT */
+.about{
+  max-width:1180px;
+  margin:auto;
+}
+.about-box{
+  padding-right:20px;
+}
+.about-box p{
+  color:#64748b;
+  line-height:1.9;
+}
+.about-image{
+  min-height:390px;
+  border-radius:30px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.04),transparent),
+    radial-gradient(circle at 25% 25%,rgba(34,211,238,.25),transparent 25%),
+    linear-gradient(135deg,#080c1a,#211d50 60%,#082f49);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 30px 80px rgba(15,23,42,.20);
+  position:relative;
+}
+.about-image:before{
+  content:"";
+  position:absolute;
+  width:150px;height:150px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:38px;
+  transform:rotate(18deg);
+}
+.about-image:after{
+  content:"BUILD • DESIGN • LAUNCH";
+  left:25px;right:25px;bottom:22px;
+  padding:13px 15px;
+  border-radius:14px;
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(12px);
+  color:#dbeafe;
+  font-size:10px;
+  letter-spacing:2.4px;
+  font-weight:800;
+}
+
+/* SERVICES */
+.services{
+  background:
+    radial-gradient(circle at 15% 5%,rgba(109,93,252,.08),transparent 22%),
+    #f1f4fa;
+}
+.cards{
+  max-width:1180px;
+  margin:auto;
+  gap:20px;
+}
+.card{
+  min-height:255px;
+  padding:30px 26px;
+  border-radius:24px;
+  border:1px solid rgba(148,163,184,.17);
+  background:var(--tz-card);
+  backdrop-filter:blur(15px);
+  box-shadow:0 12px 35px rgba(15,23,42,.065);
+  transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;
+}
+.card:after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--tz-cyan),var(--tz-violet));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:.3s;
+}
+.card:hover{
+  transform:translateY(-10px);
+  border-color:rgba(109,93,252,.28);
+  box-shadow:0 25px 60px rgba(15,23,42,.12);
+}
+.card:hover:after{transform:scaleX(1)}
+.icon{
+  width:64px;height:64px;
+  border-radius:19px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#ede9fe,#cffafe);
+  box-shadow:0 10px 25px rgba(109,93,252,.10);
+}
+.card h3{font-weight:800}
+.card p{color:#64748b}
+
+/* DETAIL PAGES */
+.service-page{
+  background:
+    radial-gradient(circle at 80% 10%,rgba(109,93,252,.08),transparent 25%),
+    #f7f8fc;
+}
+.service-detail{
+  border-radius:30px;
+  border:1px solid rgba(148,163,184,.18);
+  background:rgba(255,255,255,.88);
+  backdrop-filter:blur(15px);
+  box-shadow:0 30px 80px rgba(15,23,42,.10);
+}
+.service-detail .detail-item{
+  border-radius:17px;
+  background:#f8fafc;
+  border:1px solid #e7eaf0;
+  border-left:0;
+  transition:.2s;
+}
+.service-detail .detail-item:hover{
+  transform:translateY(-3px);
+  border-color:#c4b5fd;
+  box-shadow:0 10px 25px rgba(109,93,252,.08);
+}
+.service-detail .detail-item strong{color:#6d5dfc}
+.how-it-works{
+  border-radius:19px;
+  background:linear-gradient(135deg,#f8fafc,#eef2ff);
+}
+
+/* CONTACT + AUTH */
+.contact-form,.auth-box{
+  border-radius:28px;
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(148,163,184,.18);
+  box-shadow:0 30px 80px rgba(15,23,42,.10);
+  backdrop-filter:blur(15px);
+}
+.input-box input,.input-box textarea{
+  border-radius:13px;
+  background:#f8fafc;
+  border:1px solid #e2e8f0;
+}
+.input-box input:focus,.input-box textarea:focus{
+  border-color:var(--tz-violet);
+  box-shadow:0 0 0 4px rgba(109,93,252,.10);
+}
+.submit-btn,.auth-submit{
+  background:linear-gradient(135deg,var(--tz-violet),#4f46e5)!important;
+  border-radius:13px!important;
+}
+.google-btn{border-radius:13px}
+
+/* MOBILE */
+@media(max-width:800px){
+  header{
+    top:10px;
+    width:calc(100% - 20px);
+    padding:10px 14px;
+  }
+  .hero{
+    padding:150px 20px 75px;
+  }
+  .hero h1{
+    font-size:48px;
+    letter-spacing:-2.7px;
+  }
+  .hero p{font-size:16px}
+  section{padding:72px 20px}
+  .about{gap:35px}
+  .about-image{min-height:280px}
+  .service-detail{padding:28px 18px}
+}
+
+</style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="logo">TechZone</div>
+
+        <div class="menu-btn" onclick="openMenu()">☰</div>
+
+        <nav id="navbar">
+            <a href="#" onclick="showPage('home'); return false;">Home</a>
+            <a href="#" onclick="showPage('about'); return false;">About Us</a>
+            <a href="#" onclick="showPage('services'); return false;">Services</a>
+            <a href="#" onclick="showPage('contact'); return false;">Contact</a>
+
+            <button class="dark-btn" id="themeBtn" onclick="toggleTheme()">🌙 Dark</button>
+
+            <button class="dark-btn" onclick="openLogin()">
+                Login
+            </button>
+
+            <button class="dark-btn" onclick="showAuthPage('signup')">
+                Sign Up
+            </button>
+        </nav>
+    </header>
+
+
+    <!-- HOME -->
+    <section class="hero page active-page" id="home">
+
+        <div class="hero-content">
+
+            <h1>Welcome To TechZone</h1>
+
+            <p>
+                Build your online presence with our modern,
+                fast and responsive website solutions.
+            </p>
+
+            <a href="#" class="btn" onclick="showPage('services'); return false;">
+                Explore Services
+            </a>
+
+            <button class="btn" onclick="openLogin()">
+                Login
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="page" id="about">
+
+        <div class="about">
+
+            <div class="about-box">
+
+                <h2>About Us</h2>
+
+                <p>
+                    Welcome to TechZone. We create modern and
+                    responsive websites using HTML, CSS and JavaScript.
+                </p>
+
+                <p>
+                    Our goal is to make websites that look beautiful
+                    on laptops, tablets and mobile phones.
+                </p>
+
+                <a href="#" class="btn"
+                   onclick="showPage('contact'); return false;"
+                   style="background:#0066ff;color:white;">
+                    Contact Us
+                </a>
+
+            </div>
+
+            <div class="about-image">
+                💻
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+    <section class="services page" id="services">
+
+        <div class="title">
+
+            <h2>Our Services</h2>
+
+            <p>
+                What we can do for you
+            </p>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card" onclick="showService('web-development')">
+                <div class="icon">🌐</div>
+                <h3>Web Development</h3>
+                <p>Modern and functional websites using HTML, CSS and JavaScript.</p>
+            </div>
+
+            <div class="card" onclick="showService('web-design')">
+                <div class="icon">🎨</div>
+                <h3>Web Design</h3>
+                <p>Clean, attractive and user-friendly website layouts and interfaces.</p>
+            </div>
+
+            <div class="card" onclick="showService('responsive-design')">
+                <div class="icon">📱</div>
+                <h3>Responsive Design</h3>
+                <p>Websites that automatically adjust to mobile, tablet and laptop screens.</p>
+            </div>
+
+            <div class="card" onclick="showService('ui-ux-design')">
+                <div class="icon">✨</div>
+                <h3>UI / UX Design</h3>
+                <p>Simple user interfaces and smooth experiences that are easy to use.</p>
+            </div>
+
+            <div class="card" onclick="showService('ecommerce')">
+                <div class="icon">🛒</div>
+                <h3>E-Commerce</h3>
+                <p>Online stores with product sections, shopping features and modern layouts.</p>
+            </div>
+
+            <div class="card" onclick="showService('website-maintenance')">
+                <div class="icon">🛠️</div>
+                <h3>Website Maintenance</h3>
+                <p>Website updates, bug fixing, content changes and performance improvements.</p>
+            </div>
+
+            <div class="card" onclick="showService('seo')">
+                <div class="icon">🔎</div>
+                <h3>SEO Optimization</h3>
+                <p>Basic search-engine-friendly structure, content and performance improvements.</p>
+            </div>
+
+            <div class="card" onclick="showService('landing-page')">
+                <div class="icon">🚀</div>
+                <h3>Landing Pages</h3>
+                <p>Focused and attractive pages for products, businesses, campaigns and services.</p>
+            </div>
+
+            <div class="card" onclick="showService('javascript')">
+                <div class="icon">⚡</div>
+                <h3>JavaScript Features</h3>
+                <p>Interactive buttons, forms, modals, navigation, validation and dynamic features.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SERVICE DETAIL PAGES -->
+    <section class="service-page" id="web-development">
+        <div class="service-detail">
+            <div class="big-icon">🌐</div>
+            <h2>Web Development</h2>
+
+            <p class="detail-intro">Web Development website ka complete functional structure banane ka process hai. Is mein HTML se structure, CSS se styling aur JavaScript se interactive functionality add ki jati hai.</p>
+
+            <div class="detail-list">
+                <div class="detail-item">
+                    <strong>HTML Structure</strong>
+                    <span>Website ke pages, headings, sections, forms aur content ka proper structure.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>CSS Styling</strong>
+                    <span>Colors, spacing, cards, buttons, layouts aur visual appearance ko design karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>JavaScript</strong>
+                    <span>Buttons, navigation, forms, modals, alerts aur dynamic features ko functional banana.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Navigation</strong>
+                    <span>Home, About, Services aur Contact pages ke darmiyan smooth navigation.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Forms</strong>
+                    <span>Contact aur login forms ke liye validation aur user interaction.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Interactive Features</strong>
+                    <span>Dark mode, menus, service pages aur other clickable features.</span>
+                </div>
+            </div>
+
+            <div class="how-it-works">
+                <h3>How It Works</h3>
+                <ol>
+                    <li>Website ki requirements aur pages decide kiye jate hain.</li>
+                    <li>HTML mein complete page structure banaya jata hai.</li>
+                    <li>CSS se website ko professional design diya jata hai.</li>
+                    <li>JavaScript se buttons aur interactive features run kiye jate hain.</li>
+                    <li>Desktop aur mobile par testing ki jati hai.</li>
+                </ol>
+            </div>
+
+            <button class="btn back-btn"
+                    onclick="showPage('services')"
+                    style="background:#0066ff;color:white;">
+                ← Back to Services
+            </button>
+        </div>
+    </section>
+
+    <section class="service-page" id="web-design">
+        <div class="service-detail">
+            <div class="big-icon">🎨</div>
+            <h2>Web Design</h2>
+
+            <p class="detail-intro">Web Design website ki look, feel aur visual presentation ko professional banata hai. Goal yeh hota hai ke website attractive bhi ho aur visitor ke liye easy bhi ho.</p>
+
+            <div class="detail-list">
+                <div class="detail-item">
+                    <strong>Layout</strong>
+                    <span>Sections, columns, cards aur content ko clean arrangement mein place karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Colors</strong>
+                    <span>Brand ke according suitable color combinations select karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Typography</strong>
+                    <span>Readable fonts, headings aur text sizes ko properly set karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Buttons</strong>
+                    <span>Clear aur attractive buttons with hover effects.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Cards</strong>
+                    <span>Services, products aur information ko organized cards mein show karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Visual Experience</strong>
+                    <span>Website ko modern, clean aur professional appearance dena.</span>
+                </div>
+            </div>
+
+            <div class="how-it-works">
+                <h3>How It Works</h3>
+                <ol>
+                    <li>Website ka visual structure plan kiya jata hai.</li>
+                    <li>Colors, fonts aur spacing select ki jati hai.</li>
+                    <li>Sections, cards aur buttons design kiye jate hain.</li>
+                    <li>Desktop aur mobile layouts ko check kiya jata hai.</li>
+                    <li>Final design ko website ke HTML/CSS mein implement kiya jata hai.</li>
+                </ol>
+            </div>
+
+            <button class="btn back-btn"
+                    onclick="showPage('services')"
+                    style="background:#0066ff;color:white;">
+                ← Back to Services
+            </button>
+        </div>
+    </section>
+
+    <section class="service-page" id="responsive-design">
+        <div class="service-detail">
+            <div class="big-icon">📱</div>
+            <h2>Responsive Design</h2>
+
+            <p class="detail-intro">Responsive Design ka matlab hai ke website mobile, tablet, laptop aur desktop par properly adjust ho. Screen choti ya bari hone par layout automatically adapt karta hai.</p>
+
+            <div class="detail-list">
+                <div class="detail-item">
+                    <strong>Mobile Layout</strong>
+                    <span>Small screens ke liye content ko single-column aur easy-to-read banana.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Tablet Layout</strong>
+                    <span>Medium screens ke liye cards aur sections ko properly adjust karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Desktop Layout</strong>
+                    <span>Large screens par multiple columns aur spacious layout use karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Flexible Images</strong>
+                    <span>Images aur content ko screen ke according fit karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Responsive Menu</strong>
+                    <span>Mobile par navigation ko compact menu mein convert karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Media Queries</strong>
+                    <span>Different screen sizes ke liye CSS rules apply karna.</span>
+                </div>
+            </div>
+
+            <div class="how-it-works">
+                <h3>How It Works</h3>
+                <ol>
+                    <li>Desktop layout design kiya jata hai.</li>
+                    <li>Mobile aur tablet screen sizes identify kiye jate hain.</li>
+                    <li>CSS media queries aur flexible layouts add kiye jate hain.</li>
+                    <li>Navigation aur cards ko responsive banaya jata hai.</li>
+                    <li>Different devices par final testing ki jati hai.</li>
+                </ol>
+            </div>
+
+            <button class="btn back-btn"
+                    onclick="showPage('services')"
+                    style="background:#0066ff;color:white;">
+                ← Back to Services
+            </button>
+        </div>
+    </section>
+
+    <section class="service-page" id="ui-ux-design">
+        <div class="service-detail">
+            <div class="big-icon">✨</div>
+            <h2>UI / UX Design</h2>
+
+            <p class="detail-intro">UI/UX Design website ke interface aur user experience ko simple aur useful banata hai. User ko website use karte waqt clear navigation aur easy interaction milta hai.</p>
+
+            <div class="detail-list">
+                <div class="detail-item">
+                    <strong>User Interface</strong>
+                    <span>Buttons, menus, cards, forms aur other visual controls design karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>User Experience</strong>
+                    <span>Visitor ke liye website ka flow simple aur understandable banana.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Navigation</strong>
+                    <span>Important pages aur information tak easy access dena.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Consistency</strong>
+                    <span>Colors, buttons, fonts aur spacing mein consistent design rakhna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Accessibility</strong>
+                    <span>Readable text aur clear controls ke zariye usability improve karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>User Flow</strong>
+                    <span>Visitor ko page se page tak logical way mein guide karna.</span>
+                </div>
+            </div>
+
+            <div class="how-it-works">
+                <h3>How It Works</h3>
+                <ol>
+                    <li>User ko website par kya karna hai, woh identify kiya jata hai.</li>
+                    <li>Pages aur navigation ka flow plan kiya jata hai.</li>
+                    <li>Interface elements design kiye jate hain.</li>
+                    <li>User-friendly spacing, colors aur typography apply ki jati hai.</li>
+                    <li>Complete flow ko test karke improvements ki jati hain.</li>
+                </ol>
+            </div>
+
+            <button class="btn back-btn"
+                    onclick="showPage('services')"
+                    style="background:#0066ff;color:white;">
+                ← Back to Services
+            </button>
+        </div>
+    </section>
+
+    <section class="service-page" id="ecommerce">
+        <div class="service-detail">
+            <div class="big-icon">🛒</div>
+            <h2>E-Commerce</h2>
+
+            <p class="detail-intro">E-Commerce service online store ke liye professional product aur shopping interface banane par focus karti hai. Customers ko products browse karne aur information samajhne mein asani hoti hai.</p>
+
+            <div class="detail-list">
+                <div class="detail-item">
+                    <strong>Product Cards</strong>
+                    <span>Product image, name, price aur action button ko organized way mein show karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Categories</strong>
+                    <span>Products ko different categories mein organize karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Product Details</strong>
+                    <span>Product ke features, description aur pricing ko clearly display karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Cart Interface</strong>
+                    <span>Shopping cart style interface jahan selected products show ho saken.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Search</strong>
+                    <span>Products ko quickly find karne ke liye search interface.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Responsive Store</strong>
+                    <span>Online store ko mobile, tablet aur desktop par usable banana.</span>
+                </div>
+            </div>
+
+            <div class="how-it-works">
+                <h3>How It Works</h3>
+                <ol>
+                    <li>Store ke products aur categories ka structure plan hota hai.</li>
+                    <li>Product cards aur product detail layouts banaye jate hain.</li>
+                    <li>Shopping buttons aur cart-style interactions add ki jati hain.</li>
+                    <li>Responsive design apply ki jati hai.</li>
+                    <li>Complete store interface ko test kiya jata hai.</li>
+                </ol>
+            </div>
+
+            <button class="btn back-btn"
+                    onclick="showPage('services')"
+                    style="background:#0066ff;color:white;">
+                ← Back to Services
+            </button>
+        </div>
+    </section>
+
+    <section class="service-page" id="website-maintenance">
+        <div class="service-detail">
+            <div class="big-icon">🛠️</div>
+            <h2>Website Maintenance</h2>
+
+            <p class="detail-intro">Website Maintenance ka purpose existing website ko updated, functional aur clean rakhna hai. Problems ko fix karke website mein required changes kiye jate hain.</p>
+
+            <div class="detail-list">
+                <div class="detail-item">
+                    <strong>Bug Fixing</strong>
+                    <span>Website ke broken buttons, layout problems aur JavaScript errors fix karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Content Updates</strong>
+                    <span>Text, images, headings aur other content update karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Design Changes</strong>
+                    <span>Colors, cards, sections aur layouts mein changes karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Feature Updates</strong>
+                    <span>New buttons, pages ya interactive features add karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Mobile Fixes</strong>
+                    <span>Mobile screens par layout aur navigation problems solve karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Performance</strong>
+                    <span>Unnecessary code aur layout issues ko improve karna.</span>
+                </div>
+            </div>
+
+            <div class="how-it-works">
+                <h3>How It Works</h3>
+                <ol>
+                    <li>Existing website ko check karke problems identify ki jati hain.</li>
+                    <li>Required changes ki list banayi jati hai.</li>
+                    <li>Bugs aur layout issues fix kiye jate hain.</li>
+                    <li>New content ya features add kiye jate hain.</li>
+                    <li>Final website ko different screens par test kiya jata hai.</li>
+                </ol>
+            </div>
+
+            <button class="btn back-btn"
+                    onclick="showPage('services')"
+                    style="background:#0066ff;color:white;">
+                ← Back to Services
+            </button>
+        </div>
+    </section>
+
+    <section class="service-page" id="seo">
+        <div class="service-detail">
+            <div class="big-icon">🔎</div>
+            <h2>SEO Optimization</h2>
+
+            <p class="detail-intro">SEO Optimization website ko search-engine-friendly banane ki basic techniques par focus karti hai. Proper structure aur readable content search visibility ko support karte hain.</p>
+
+            <div class="detail-list">
+                <div class="detail-item">
+                    <strong>Page Titles</strong>
+                    <span>Pages ke liye clear aur relevant titles set karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Headings</strong>
+                    <span>H1, H2 aur other headings se content ko properly organize karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Readable Content</strong>
+                    <span>Useful aur understandable text structure maintain karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Responsive Website</strong>
+                    <span>Mobile-friendly website experience maintain karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Performance</strong>
+                    <span>Website ke loading aur unnecessary elements ko improve karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Clean Structure</strong>
+                    <span>HTML structure ko organized aur understandable rakhna.</span>
+                </div>
+            </div>
+
+            <div class="how-it-works">
+                <h3>How It Works</h3>
+                <ol>
+                    <li>Website ke pages aur content structure ko review kiya jata hai.</li>
+                    <li>Titles aur headings ko relevant banaya jata hai.</li>
+                    <li>Content ko clear sections mein organize kiya jata hai.</li>
+                    <li>Responsive aur performance issues check kiye jate hain.</li>
+                    <li>Final pages ko SEO-friendly structure ke liye review kiya jata hai.</li>
+                </ol>
+            </div>
+
+            <button class="btn back-btn"
+                    onclick="showPage('services')"
+                    style="background:#0066ff;color:white;">
+                ← Back to Services
+            </button>
+        </div>
+    </section>
+
+    <section class="service-page" id="landing-page">
+        <div class="service-detail">
+            <div class="big-icon">🚀</div>
+            <h2>Landing Pages</h2>
+
+            <p class="detail-intro">Landing Page ek focused page hota hai jo kisi product, service, business, campaign ya offer ko clearly present karta hai aur visitor ko ek specific action ki taraf guide karta hai.</p>
+
+            <div class="detail-list">
+                <div class="detail-item">
+                    <strong>Hero Section</strong>
+                    <span>Strong heading, description aur main call-to-action button.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Features</strong>
+                    <span>Product ya service ke important benefits ko clearly show karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Call To Action</strong>
+                    <span>Contact, Buy Now, Get Started ya other action buttons.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Trust Section</strong>
+                    <span>Business information, benefits ya supporting content.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Clean Layout</strong>
+                    <span>Visitor ka attention main offer par focus rakhna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Responsive Design</strong>
+                    <span>Landing page ko all screen sizes par properly show karna.</span>
+                </div>
+            </div>
+
+            <div class="how-it-works">
+                <h3>How It Works</h3>
+                <ol>
+                    <li>Landing page ka main goal decide kiya jata hai.</li>
+                    <li>Hero section aur call-to-action design kiya jata hai.</li>
+                    <li>Features aur supporting sections add kiye jate hain.</li>
+                    <li>Responsive layout implement kiya jata hai.</li>
+                    <li>Buttons aur complete page interaction test ki jati hai.</li>
+                </ol>
+            </div>
+
+            <button class="btn back-btn"
+                    onclick="showPage('services')"
+                    style="background:#0066ff;color:white;">
+                ← Back to Services
+            </button>
+        </div>
+    </section>
+
+    <section class="service-page" id="javascript">
+        <div class="service-detail">
+            <div class="big-icon">⚡</div>
+            <h2>JavaScript Features</h2>
+
+            <p class="detail-intro">JavaScript website ko static page se interactive website mein convert karta hai. User ke click, input aur other actions par website dynamically response kar sakti hai.</p>
+
+            <div class="detail-list">
+                <div class="detail-item">
+                    <strong>Page Navigation</strong>
+                    <span>Home, About, Services aur Contact sections ko JavaScript se switch karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Dark / Light Mode</strong>
+                    <span>User ko theme change karne ka option dena aur preference save karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Forms</strong>
+                    <span>Input values read karna, validation aur submit actions handle karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Modals</strong>
+                    <span>Login boxes aur popup windows ko open aur close karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Buttons</strong>
+                    <span>Click events ke through different actions perform karna.</span>
+                </div>
+                <div class="detail-item">
+                    <strong>Dynamic Content</strong>
+                    <span>Selected service ya other content ko dynamically show karna.</span>
+                </div>
+            </div>
+
+            <div class="how-it-works">
+                <h3>How It Works</h3>
+                <ol>
+                    <li>Required interactive features identify kiye jate hain.</li>
+                    <li>JavaScript functions aur event handlers banaye jate hain.</li>
+                    <li>Buttons, forms aur navigation ko functions se connect kiya jata hai.</li>
+                    <li>User actions par correct response test kiya jata hai.</li>
+                    <li>LocalStorage jaisi features se required settings save ki jati hain.</li>
+                </ol>
+            </div>
+
+            <button class="btn back-btn"
+                    onclick="showPage('services')"
+                    style="background:#0066ff;color:white;">
+                ← Back to Services
+            </button>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="page" id="contact">
+
+        <div class="title">
+
+            <h2>Contact Us</h2>
+
+            <p>
+                Send us a message
+            </p>
+
+        </div>
+
+        <div class="contact-container">
+
+            <form class="contact-form" onsubmit="sendMessage(event)">
+
+                <div class="input-box">
+
+                    <label>Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <label>Message</label>
+
+                    <textarea
+                        placeholder="Write your message..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button class="submit-btn" type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <h3>TechZone</h3>
+
+        <p>© 2026 TechZone. All Rights Reserved.</p>
+
+        <div class="social">
+
+            <a href="#">Facebook</a>
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- LOGIN PAGE -->
+    <section class="auth-page" id="loginPage">
+        <div class="auth-box">
+            <h2>Login</h2>
+            <p class="auth-subtitle">Login to open TechZone</p>
+
+            <form onsubmit="loginUser(event)">
+                <div class="input-box">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail"
+                           placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword"
+                           placeholder="Enter your password" required>
+                </div>
+
+                <button class="auth-submit" type="submit">
+                    Login
+                </button>
+            </form>
+
+            <div class="auth-divider">OR</div>
+
+            <button class="google-btn" onclick="continueWithGoogle()">
+                🔵 Continue with Google
+            </button>
+
+            <p class="auth-switch">
+                Don't have an account?
+                <a onclick="showAuthPage('signup')">Sign Up</a>
+            </p>
+        </div>
+    </section>
+
+
+    <!-- SIGN UP PAGE -->
+    <section class="auth-page" id="signupPage">
+        <div class="auth-box">
+            <h2>Create Account</h2>
+            <p class="auth-subtitle">Sign up to access TechZone</p>
+
+            <form onsubmit="signupUser(event)">
+                <div class="input-box">
+                    <label>Full Name</label>
+                    <input type="text" id="signupName"
+                           placeholder="Enter your name" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail"
+                           placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword"
+                           placeholder="Create a password" minlength="6" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Confirm Password</label>
+                    <input type="password" id="signupConfirm"
+                           placeholder="Confirm your password" minlength="6" required>
+                </div>
+
+                <button class="auth-submit" type="submit">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="auth-divider">OR</div>
+
+            <button class="google-btn" onclick="continueWithGoogle()">
+                🔵 Continue with Google
+            </button>
+
+            <p class="auth-switch">
+                Already have an account?
+                <a onclick="showAuthPage('login')">Login</a>
+            </p>
+
+            <p class="auth-note">
+                Google button is a demo OAuth-style flow. Real Google authentication
+                requires Google OAuth credentials and a backend.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- LOGIN MODAL -->
+    <div class="modal" id="loginModal">
+
+        <div class="login-box">
+
+            <span class="close" onclick="closeLogin()">×</span>
+
+            <h2>Login</h2>
+
+            <form onsubmit="login(event)">
+
+                <div class="input-box">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        placeholder="Enter email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-box">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        placeholder="Enter password"
+                        required
+                    >
+
+                </div>
+
+
+                <button class="submit-btn">
+                    Login
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // ALL SERVICE IDs USED BY THE WEBSITE
+        const serviceIds = [
+            "web-development",
+            "web-design",
+            "responsive-design",
+            "ui-ux-design",
+            "ecommerce",
+            "website-maintenance",
+            "seo",
+            "landing-page",
+            "javascript"
+        ];
+
+        // AUTHENTICATION
+        function getUsers() {
+            return JSON.parse(localStorage.getItem("techzoneUsers") || "[]");
+        }
+
+        function saveUsers(users) {
+            localStorage.setItem("techzoneUsers", JSON.stringify(users));
+        }
+
+        function isLoggedIn() {
+            return localStorage.getItem("techzoneLoggedIn") === "yes";
+        }
+
+        function showAuthPage(type) {
+            // Close old login modal if it is open
+            closeLogin();
+
+            document.querySelectorAll(".page").forEach(function(page) {
+                page.classList.remove("active-page");
+            });
+
+            document.querySelectorAll(".service-page").forEach(function(page) {
+                page.classList.remove("active-service");
+            });
+
+            document.querySelectorAll(".auth-page").forEach(function(page) {
+                page.classList.remove("active-auth");
+            });
+
+            const page = document.getElementById(
+                type === "signup" ? "signupPage" : "loginPage"
+            );
+
+            if (page) {
+                page.classList.add("active-auth");
+            }
+
+            document.getElementById("navbar").classList.remove("active");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        function openWebsiteAfterLogin(name) {
+            localStorage.setItem("techzoneLoggedIn", "yes");
+            localStorage.setItem("techzoneCurrentUser", name || "User");
+
+            // Remove auth screens and open Home
+            document.querySelectorAll(".auth-page").forEach(function(page) {
+                page.classList.remove("active-auth");
+            });
+
+            showPage("home");
+
+            alert("Welcome " + (name || "User") + "! Website opened successfully. ✅");
+        }
+
+        function signupUser(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("signupName").value.trim();
+            const email = document.getElementById("signupEmail").value.trim().toLowerCase();
+            const password = document.getElementById("signupPassword").value;
+            const confirm = document.getElementById("signupConfirm").value;
+
+            if (password !== confirm) {
+                alert("Passwords do not match!");
+                return;
+            }
+
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters.");
+                return;
+            }
+
+            const users = getUsers();
+
+            if (users.some(function(user) {
+                return user.email === email;
+            })) {
+                alert("This email is already registered. Please Login.");
+                showAuthPage("login");
+                document.getElementById("loginEmail").value = email;
+                return;
+            }
+
+            users.push({
+                name: name,
+                email: email,
+                password: password
+            });
+
+            saveUsers(users);
+
+            alert("Account created successfully! Now login to open the website. ✅");
+
+            document.getElementById("signupEmail").value = "";
+            document.getElementById("signupPassword").value = "";
+            document.getElementById("signupConfirm").value = "";
+
+            showAuthPage("login");
+            document.getElementById("loginEmail").value = email;
+        }
+
+        function loginUser(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+            const password = document.getElementById("loginPassword").value;
+
+            const users = getUsers();
+
+            const user = users.find(function(item) {
+                return item.email === email && item.password === password;
+            });
+
+            if (!user) {
+                alert("Invalid email or password. Please Sign Up first.");
+                return;
+            }
+
+            openWebsiteAfterLogin(user.name);
+        }
+
+        function continueWithGoogle() {
+            /*
+             * DEMO ONLY:
+             * A real Google sign-in needs Google OAuth Client ID,
+             * redirect URI and backend/token verification.
+             * This button simulates a successful Google login locally.
+             */
+            const googleName = prompt(
+                "Demo Google Login\\nEnter the Google account name:"
+            );
+
+            if (!googleName || !googleName.trim()) {
+                return;
+            }
+
+            openWebsiteAfterLogin(googleName.trim());
+        }
+
+        function logoutUser() {
+            localStorage.removeItem("techzoneLoggedIn");
+            localStorage.removeItem("techzoneCurrentUser");
+            showAuthPage("login");
+        }
+
+        // SERVICE DETAILS
+        function showService(serviceId) {
+
+            // Service pages require login.
+            if (!isLoggedIn()) {
+                showAuthPage("login");
+                return;
+            }
+
+            // Hide normal pages
+            document.querySelectorAll(".page").forEach(function(page) {
+                page.classList.remove("active-page");
+            });
+
+            // Hide every service page
+            document.querySelectorAll(".service-page").forEach(function(page) {
+                page.classList.remove("active-service");
+            });
+
+            // Show selected service
+            const service = document.getElementById(serviceId);
+
+            if (!service) {
+                console.log("Service not found:", serviceId);
+                return;
+            }
+
+            service.classList.add("active-service");
+
+            // Close mobile menu
+            document.getElementById("navbar").classList.remove("active");
+
+            // Go to top
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        // MAIN PAGE NAVIGATION
+        function showPage(pageId) {
+
+            // Website pages require login.
+            // Auth pages remain accessible without login.
+            if (!isLoggedIn()) {
+                if (pageId !== "loginPage" && pageId !== "signupPage") {
+                    showAuthPage("login");
+                    return;
+                }
+            }
+
+            // Hide all normal pages
+            document.querySelectorAll(".page").forEach(function(page) {
+                page.classList.remove("active-page");
+            });
+
+            // Hide all service detail pages
+            document.querySelectorAll(".service-page").forEach(function(page) {
+                page.classList.remove("active-service");
+            });
+
+            const selectedPage = document.getElementById(pageId);
+
+            if (!selectedPage) {
+                console.log("Page not found:", pageId);
+                return;
+            }
+
+            selectedPage.classList.add("active-page");
+
+            // Close mobile menu
+            document.getElementById("navbar").classList.remove("active");
+
+            // Go to top
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+        // MOBILE MENU
+        function openMenu() {
+            document.getElementById("navbar").classList.toggle("active");
+        }
+
+        // LIGHT / DARK MODE
+        function toggleTheme() {
+            document.body.classList.toggle("dark");
+
+            const isDark = document.body.classList.contains("dark");
+
+            // Save selected theme
+            localStorage.setItem("techzoneTheme", isDark ? "dark" : "light");
+
+            updateThemeButton();
+        }
+
+        // UPDATE BUTTON TEXT + ICON
+        function updateThemeButton() {
+            const themeBtn = document.getElementById("themeBtn");
+
+            if (!themeBtn) return;
+
+            if (document.body.classList.contains("dark")) {
+                themeBtn.innerHTML = "☀️ Light";
+            } else {
+                themeBtn.innerHTML = "🌙 Dark";
+            }
+        }
+
+        // LOAD SAVED THEME
+        function loadTheme() {
+            const savedTheme = localStorage.getItem("techzoneTheme");
+
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark");
+            } else {
+                document.body.classList.remove("dark");
+            }
+
+            updateThemeButton();
+        }
+
+        // LOGIN OPEN
+        function openLogin() {
+            document.getElementById("loginModal").style.display = "flex";
+        }
+
+        // LOGIN CLOSE
+        function closeLogin() {
+            document.getElementById("loginModal").style.display = "none";
+        }
+
+        // LOGIN
+        function login(event) {
+            event.preventDefault();
+
+            const email = event.target.querySelector('input[type="email"]').value;
+
+            alert("Welcome to TechZone!\\nLogged in as: " + email);
+
+            event.target.reset();
+            closeLogin();
+        }
+
+        // CONTACT FORM
+        function sendMessage(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value.trim();
+
+            if (!name) {
+                alert("Please enter your name.");
+                return;
+            }
+
+            alert(
+                "Thank you " +
+                name +
+                "! Your message has been sent successfully. ✅"
+            );
+
+            event.target.reset();
+        }
+
+        // CLOSE LOGIN WHEN CLICKING OUTSIDE
+        window.addEventListener("click", function(event) {
+            const modal = document.getElementById("loginModal");
+
+            if (event.target === modal) {
+                closeLogin();
+            }
+        });
+
+        // ESC KEY CLOSES LOGIN
+        window.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                closeLogin();
+            }
+        });
+
+        // CLOSE MOBILE MENU AFTER CLICKING A NAV LINK
+        document.querySelectorAll("#navbar a").forEach(function(link) {
+            link.addEventListener("click", function() {
+                document.getElementById("navbar").classList.remove("active");
+            });
+        });
+
+        // INITIALIZE WEBSITE
+        document.addEventListener("DOMContentLoaded", function() {
+            loadTheme();
+
+            // Login is required before opening the website
+            if (isLoggedIn()) {
+                showPage("home");
+            } else {
+                showAuthPage("login");
+            }
+        });
+
+    
+/* ===== SAFE STARTUP ===== */
+document.addEventListener("DOMContentLoaded", function(){
+    try{
+        if(typeof loadTheme === "function") loadTheme();
+        if(typeof updateThemeButton === "function") updateThemeButton();
+    }catch(e){ console.warn("Theme startup:",e); }
+});
+
+</script>
+
+</body>
+</html>
+```
